@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>改变style 来改变样式</title>
+    <script src="../02-02/vue.js"> </script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 这个div的样式由数组里面的对象所显示，因此数组可以挂载多个对象 -->
+        <div :style="[styleObj,{fontSize:'20px'}]" @click="handleDivClick">
+            hello world
+        </div>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            styleObj: {
+                color: "black"
+            }
+        },
+        methods: {
+            handleDivClick: function () {
+                this.styleObj.color = this.styleObj.color === "black" ? "red" : "black"
+            }
+        }
+    })
+</script>
+
+</html>

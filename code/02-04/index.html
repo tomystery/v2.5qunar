@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue"/>
+        <button v-on:click="handleBtnClick">提交</button>
+        <ul>
+            <li v-for="item in list">{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script>
+    /* 
+    MVVM
+    M层 data:{}就是数据
+    V层  上面的dom就是v
+    VM层 使用方法对数据进行操作，V层就变化了
+    
+    这样的好处就是只要关注m层的变化就可以了，这样的代码可以节约，
+    vue是怎么知道数据改变从而去改变V？用到了虚拟dom以及define property的知识
+    */
+var app=new Vue({
+    el:'#app',
+    data:{
+        list:['第一课的内容','第二课的内容'],
+        inputValue:''
+    },
+    methods:{
+        handleBtnClick:function(){
+         
+            this.list.push(this.inputValue)
+            //清空输入框
+            this.inputValue=''
+        }
+    }
+})
+
+//MVVM框架，只关注于框架
+
+
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中的样式绑定</title>
+    <style>
+    .activated{
+        color: red;
+    }
+    </style>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 我希望这个div有一个class名，这个class的名称是activated,这个activated的显示是由isActivated这个变量来决定的 -->
+        <div @click="handleDivClick"
+            :class="{ activated : isActivated}"
+            
+        > 
+            hello world
+        </div>
+    </div>
+</body>
+<script>
+    // 现在要的，点击hello world一次变成默认的红色，再点击一次获得默认的展示，数据改变样式就会变
+var vm=new Vue({
+    el:"#app",
+    data:{
+        isActivated:false
+    },
+    methods:{
+        handleDivClick:function(){
+            this.isActivated=!this.isActivated
+            
+        }
+    }
+})
+</script>
+</html>

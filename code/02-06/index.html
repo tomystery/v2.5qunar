@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue" />
+        <button v-on:click="handleBtnClick">提交</button>
+        <ul>
+            <todo-item v-bind:content="item" v-for="item in list"></todo-item>
+            <!-- 通过遍历list的每一项赋值给item，将item通过v-bind的方式传给todo-item ,怎么传是通过content来传。
+            那么子组件是如何接受内容呢？下面的props。
+            -->
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.component("TodoItem", {
+        props: ['content'],
+        template: "<li>{{content}}</li>"
+    })
+
+    /*  每次添加都是todo-item，要显示数据就要传递数据 */
+    var app = new Vue({
+        el: '#app',
+        data: {
+            list: [],
+            inputValue: ''
+        },
+        methods: {
+            handleBtnClick: function () {
+
+                this.list.push(this.inputValue)
+                //清空输入框
+                this.inputValue = ''
+            }
+        }
+    })
+
+    //MVVM框架，只关注于框架
+</script>
+
+</html>

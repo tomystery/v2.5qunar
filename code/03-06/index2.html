@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中的样式绑定</title>
+    <style>
+    .activated{
+        color: red;
+    }
+    </style>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- div会有一个class,这个class显示的是activated里面的内容 -->
+        <div @click="handleDivClick"
+            :class="[activated]"
+            
+        > 
+            hello world
+        </div>
+    </div>
+</body>
+<script>
+    // 现在要的，点击hello world一次变成默认的红色，再点击一次获得默认的展示，数据改变样式就会变
+var vm=new Vue({
+    el:"#app",
+    data:{
+        activated:""
+    },
+    methods:{
+        handleDivClick:function(){
+            this.activated==="activated" ? this.activated="" :this.activated="activated"  
+        }
+    }
+})
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue" />
+        <button v-on:click="handleBtnClick">提交</button>
+        <ul>
+            <todo-item v-bind:content="item" v-for="item in list"></todo-item>
+        </ul>
+    </div>
+</body>
+<script>
+  
+
+    var TodoItem={ //看起来是个普通的对象，实际上是个局部组件，正确的使用是把局部组件注册到根的实例里，
+        props: ['content'],
+        template: "<li>{{content}}</li>"
+    }
+
+    
+    var app = new Vue({
+        el: '#app',
+        components:{
+            TodoItem:TodoItem //原来是todo-item,现在依然是todo-item
+        },
+        data: {
+            list: [],
+            inputValue: ''
+        },
+        methods: {
+            handleBtnClick: function () {
+
+                this.list.push(this.inputValue)
+                //清空输入框
+                this.inputValue = ''
+            }
+        }
+    })
+
+   
+</script>
+
+</html>

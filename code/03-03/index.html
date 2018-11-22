@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模版语法</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-text="name + 'Lee' ">  <!-- 让这个div.text等于name的值 --></div>
+        <div v-html="name + 'Lee' "></div>
+        {{name + 'Lee'}} 
+        <!-- 这个在vue中叫做X值表达式 -->
+    </div>
+    
+</body>
+<script>
+var vm=new Vue({
+    el:'#app',
+    data:{
+        name:"Dell"
+        // name:"<h1>DElls</h1>"
+    }
+})
+
+//三个模版语法：X值表达式 v-text v-html
+</script>
+</html>

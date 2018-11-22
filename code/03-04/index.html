@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性 方法 侦听器</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{firstName + " " + lastName}}
+        {{firstName}}{{lastName}}
+        {{fullName}}
+        {{age}}
+        <!-- 模版就是显示用的，不想让他用语法 -->
+
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            firstName: "Dell",
+            lastName: "Lee",
+            fullName: "Dell Lee",
+            age: 28
+        },
+        watch: {
+            firstName: function () {
+                console.log('计算了一次')
+                return this.firstName + " " + this.lastName
+            },
+            lastName: function () {
+                console.log('计算了一次')
+                return this.firstName + " " + this.lastName
+            }
+        }
+        // methods:{
+        //     /* 方法的方式内部没有缓存机制 */
+        //     fullName:function(){
+        //         console.log('计算了一次')
+        //         return this.firstName + " " + this.lastName
+        //     }
+        // }
+
+        //计算属性
+        /*  computed: {
+             fullName: function () {
+                 console.log('计算了一次')
+                 return this.firstName + " " + this.lastName
+             }
+
+         } */
+    })
+
+    /* 不产生冗余，又要把整个的显示出来。这就产生了计算属性 */
+    /* 这个计算属性是会缓存的，也就是说他的原数据没有发生变化的话，
+    你改变原数据以外的值他并不会去重新计算 */
+</script>
+
+</html>

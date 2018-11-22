@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中的列表渲染</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-for="(item) in list" :key="item.id">
+            <div>
+                {{item.text}}---{{item.id}}
+            </div>
+            <!-- 假设我这里还要渲染出span -->
+            <span>
+                {{item.text}}
+            </span>
+        </template>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list: [{
+                id: "01001",
+                text: "hello"
+            }, {
+                id: "01002",
+                text: "hello"
+            }, {
+                id: "01003",
+                text: "hello"
+            }]
+        }
+
+
+    })
+</script>
+
+</html>
