@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父向子组件传递数据</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <counter :count="0"></counter> 
+        <!-- 加了 ：那么count里面的内容就是js表达式了，“0”就变成了数字，没加冒号就是字符串了 -->
+        <counter :count="1"></counter>
+    </div>
+</body>
+<script>
+    var counter = {
+        props:['count'], //父组件向子组件传递数据count,props是接受从父组件传递的属性
+        data:function(){
+            return {
+                number:this.count //我自己复制一份传过来的
+            }
+
+        },
+        template: '<div @click="handleClick">{{number}}</div>',
+        methods:{
+            handleClick:function(){
+                this.number++
+            }
+        }
+    }
+
+    var vm=new Vue({
+        el:"#root",
+        components:{
+            counter:counter
+        }
+    })
+
+    /* 通过属性传 */
+</script>
+
+</html>

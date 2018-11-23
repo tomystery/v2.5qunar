@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>给组件绑定原生事件</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child @click="handleClick"></child>
+    </div>
+    
+   
+</body>
+<script>
+    Vue.component('child',{
+        template:'<div @click="handleChildClick">Child</div>',
+        methods:{
+            handleChildClick:function(){
+                alert('child click')
+                this.$emit('click')
+            }
+        }
+    })
+
+    var vm= new Vue({
+        el:'#root',
+        methods:{
+            handleClick:function(){
+                alert('click')
+                
+            }
+        }
+    })
+
+    /* 这样子两层的传递太麻烦了，我就是想监听子组件就能监听到事件 */
+</script>
+</html>

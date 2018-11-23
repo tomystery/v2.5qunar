@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件使用中的细节点</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div 
+        ref='hello'  
+        @click="handleClick">hello world</div>
+    </div>
+    
+</body>
+<script>
+var vm=new Vue({
+    el:'#root',
+    methods:{
+        handleClick:function(){
+            /* div点击的时候出现hello world */
+            /* this.$refs是找到所有的引用，this.$refs.hello是找到所有引用里面的那个hello,同时这个就获取到了hello的这个dom节点 */
+         console.log(this.$refs.hello.innerHTML)  
+        }
+    }
+})
+</script>
+</html>
