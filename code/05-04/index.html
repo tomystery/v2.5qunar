@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue中的js与velocity.js的结合</title>
+    <script src="../02-02/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <transition name="fade" 
+        @before-enter="handleBeforeEnter" 
+        @enter="handleEnter"
+         @after-enter="handleAfterEnter">
+            <div v-show="show">hello world</div>
+        </transition>
+        <button @click="handleClick">toggle</button>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#root',
+        data: {
+            show: true
+        },
+        methods: {
+            handleClick: function () {
+                this.show = !this.show
+            },
+            handleBeforeEnter: function (el) {
+                el.style.color = 'red'
+            },
+            handleEnter: function (el, done) {
+                setTimeout(() => {
+                    el.style.color = 'green'
+
+                }, 2000) //2s之后变成绿色
+
+                setTimeout(() => {
+                    done()
+                }, 4000) //4s的时候才结束
+            },
+            handleAfterEnter: function (el) {
+                el.style.color = "#000"
+            }
+
+        }
+    })
+</script>
+
+</html>
