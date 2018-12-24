@@ -11,10 +11,10 @@
 
 <body>
     <div id="app">
-        {{firstName + " " + lastName}}
-        {{firstName}}{{lastName}}
-        {{fullName}}
-        {{age}}
+        {{firstName + " " + lastName}},
+        {{firstName}}{{lastName}},
+        {{fullName}},
+        {{age}},
         <!-- 模版就是显示用的，不想让他用语法 -->
 
     </div>
@@ -29,7 +29,7 @@
             fullName: "Dell Lee",
             age: 28
         },
-        watch: {
+        /* watch: {
             firstName: function () {
                 console.log('计算了一次')
                 return this.firstName + " " + this.lastName
@@ -38,14 +38,14 @@
                 console.log('计算了一次')
                 return this.firstName + " " + this.lastName
             }
+        } */
+        methods:{
+            /* 方法的方式内部没有缓存机制 */
+            fullName:function(){
+                console.log('计算了一次')
+                return this.firstName + " " + this.lastName
+            }
         }
-        // methods:{
-        //     /* 方法的方式内部没有缓存机制 */
-        //     fullName:function(){
-        //         console.log('计算了一次')
-        //         return this.firstName + " " + this.lastName
-        //     }
-        // }
 
         //计算属性
         /*  computed: {
