@@ -4,9 +4,9 @@
       <div class="iconfont header-abs-back">&#xe624;</div>
   </router-link>
   <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
-      <router-link  to="/" >
+    <router-link  to="/" >
       <div class="iconfont header-fixed-back">&#xe624;</div>
-  </router-link>
+    </router-link>
     景点详情
   </div>
 </div>    
@@ -27,10 +27,11 @@ export default {
    methods:{
        handleScroll(){
            const top=document.documentElement.scrollTop
+           console.log(top)
            if(top>60 ){
-               let opacity=top/140
-               opacity = opacity >1 ? 1:opacity
-              this.opacityStyle={ opacity}
+               let opacity= top / 140
+               opacity = opacity >1 ? 1 : opacity
+              this.opacityStyle= { opacity }
                this.showAbs=false
            }else{
                this.showAbs=true
@@ -39,10 +40,12 @@ export default {
    },
    /* 因为我们用了kep-alive,所以页面只要一被展示，activated这个钩子就会被执行 */
    activated(){
+       console.log('activated执行')
        window.addEventListener('scroll',this.handleScroll)
    },
    /* 这个的执行时间是页面即将被隐藏或者页面即将替换成新的页面的时候才会执行的 */
    deactivated(){
+       console.log('跳转到别的页面')
        window.removeEventListener('scroll',this.handleScroll)
    }
 }

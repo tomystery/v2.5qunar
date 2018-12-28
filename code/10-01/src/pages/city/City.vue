@@ -38,7 +38,6 @@ export default{
            res=res.data
            if(res.ret && res.data){
                res=res.data
-               console.log(res)
                this.cities=res.cities
                this.hotCities=res.hotCities
            }

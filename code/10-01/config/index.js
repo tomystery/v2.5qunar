@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api':{ // 去请求/api的时候
-        target:'http://localhost:8080',
+        target:'http://localhost:8081',
         pathRewrite:{
           '^/api':'/static/mock' //以api开头的都会转到static目录下
         }

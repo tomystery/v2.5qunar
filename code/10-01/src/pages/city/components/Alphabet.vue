@@ -6,7 +6,7 @@
       :key="key"
       :ref="key"
       @click="handleLetterClick"
-      @touchstart.prevent="handleTouchStart" 
+      @touchstart="handleTouchStart" 
       @touchmove="handleTouchMove"
       @touchend="handleTouchEnd"
     >{{key}}</li>
@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     handleLetterClick(e) {
-      console.log(e.target.innerText);
       this.$emit("change", e.target.innerText);
     },
     handleTouchStart() {
