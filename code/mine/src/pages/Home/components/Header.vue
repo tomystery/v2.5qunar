@@ -17,8 +17,16 @@
     </div>
 </template>
 <script>
+/* {{this.$store.state.city}}
+* mapState是指我把vuex里的数据映射到我这个叫做city的计算数学
+*/
+import {mapState} from 'vuex'
 export default {
-    name:"HomeHeader"
+    name:"HomeHeader",
+    computed:{
+        ...mapState(['city'])
+    }
+
 }
 </script>
 

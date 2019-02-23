@@ -1,27 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages/home/Home.vue'
-import City from '@/pages/city/City.vue'
-import Detail from '@/pages/detail/Detail.vue'
+
 
 Vue.use(Router)
 
+
+/* 异步组件，使得不再只是都打包在一个app.js的文件里面 */
 export default new Router({
   routes: [
     {
       path: '/',
       name: 'Home',
-      component: Home
+      component: ()=>import('@/pages/home/Home')
     },
     {
       path: '/city',
       name: 'City',
-      component: City
+      component: ()=>import('@/pages/city/City')
     },
     {// 这是一个动态路由，前面写死，后面传进来一个参数放到id里面
       path: '/detail/:id',
       name: 'Detail',
-      component: Detail
+      component: ()=>import('@/pages/detail/Detail')
     }
   ],
   scrollBehavior (to, from, savedPosition) {
